@@ -34,7 +34,7 @@ export class StringCalculator {
 
       const num = Number(part);
       if (isNaN(num)) {
-        throw new Error(`Invalid number in input: '${part}'`);
+        throw new Error(`Invalid number in input: ${part}'`);
       }
 
       parsedNumbers.push(num);
