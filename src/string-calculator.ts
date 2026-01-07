@@ -1,9 +1,8 @@
 export class StringCalculator {
   add(numbers: string) {
-    if (numbers.trim() === "") return 0;
+    if (numbers === "") return 0;
 
     let delimiter = ",";
-    const newLineDelimiter = "\n";
 
     // allow custom delimiter
     if (numbers.startsWith("//")) {
@@ -23,19 +22,36 @@ export class StringCalculator {
 
       numbers = numbers.slice(newlineIndex + 1);
     }
+    // replace newline with delimiter in all occurences
+    // to avoid checking for delimiter and newline at the same time
+    numbers = numbers.replace(/\n/g, delimiter);
 
-    if (numbers.includes(newLineDelimiter)) {
-      numbers = numbers.replaceAll(newLineDelimiter, delimiter);
+    const parsedNumbers: number[] = [];
+    const negativeNumbers: number[] = [];
+
+    for (let part of numbers.split(delimiter)) {
+      if (part === "") continue;
+
+      const num = Number(part);
+      if (isNaN(num)) {
+        throw new Error(`Invalid number in input: '${part}'`);
+      }
+
+      parsedNumbers.push(num);
+      if (num < 0) {
+        negativeNumbers.push(num);
+      }
     }
 
-    if (numbers.includes(delimiter)) {
-      const nums = numbers.split(delimiter);
-      return nums.reduce(
-        (previousValue, currValue) => previousValue + parseInt(currValue),
-        0
+    if (negativeNumbers.length > 0) {
+      throw new Error(
+        `negative numbers not allowed ${negativeNumbers.join(",")}`
       );
     }
 
-    return parseInt(numbers);
+    return parsedNumbers.reduce(
+      (previousValue, currValue) => previousValue + currValue,
+      0
+    );
   }
 }

@@ -29,12 +29,18 @@ describe("String Calculator Tests", () => {
     expect(calc.add(input)).toBe(expectedOutput);
   });
 
-  test("should accept newline as valid delimiter", ()=>{
+  test("should accept newline as valid delimiter", () => {
     expect(calc.add("1\n2,3")).toBe(6);
-  })
-  
-  test("should accept custom delimiter syntax", ()=>{
+  });
+
+  test("should accept custom delimiter syntax", () => {
     expect(calc.add("//;\n1;2")).toBe(3);
     expect(calc.add("//+\n1+2+9")).toBe(12);
-  })
+  });
+
+  test("should raise exception when provided numbers contain negatives", () => {
+    expect(() => calc.add("20,-30")).toThrow(
+      "negative numbers not allowed -30"
+    );
+  });
 });
