@@ -7,4 +7,10 @@ describe("String Calculator Tests", () => {
     expect(calc.add("")).toBe(0);
     expect(calc.add("   ")).toBe(0);
   });
+
+  test("should return the number itself when only one number given", () => {
+    const calc = new StringCalculator()
+    expect(calc.add("1")).toBe(1);
+    expect(calc.add("60")).toBe(60);
+  });
 });
