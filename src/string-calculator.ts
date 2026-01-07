@@ -6,7 +6,10 @@ export class StringCalculator {
 
     if (numbers.includes(delimeter)) {
       const nums = numbers.split(",");
-      return parseInt(nums[0]) + parseInt(nums[1]);
+      return nums.reduce(
+        (previousValue, currValue) => previousValue + parseInt(currValue),
+        0
+      );
     }
 
     return parseInt(numbers);

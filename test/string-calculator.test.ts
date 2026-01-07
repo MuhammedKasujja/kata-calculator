@@ -21,4 +21,11 @@ describe("String Calculator Tests", () => {
   test("should return the sum of the given two numbers", () => {
     expect(calc.add("1,5")).toBe(6);
   });
+
+  test("should return sum of multiple numbers separated by comma", () => {
+    const input = "1,5,8,9,40,4";
+    const expectedOutput = 67;
+
+    expect(calc.add(input)).toBe(expectedOutput);
+  });
 });
