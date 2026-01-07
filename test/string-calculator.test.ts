@@ -13,4 +13,9 @@ describe("String Calculator Tests", () => {
     expect(calc.add("1")).toBe(1);
     expect(calc.add("60")).toBe(60);
   });
+  
+  test("should return the sum of the given two numbers", () => {
+    const calc = new StringCalculator()
+    expect(calc.add("1,5")).toBe(6);
+  });
 });
