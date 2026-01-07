@@ -38,9 +38,14 @@ describe("String Calculator Tests", () => {
     expect(calc.add("//+\n1+2+9")).toBe(12);
   });
 
-  test("should raise exception when provided numbers contain negatives", () => {
+  test("should throw when provided numbers contain negatives", () => {
     expect(() => calc.add("20,-30")).toThrow(
       "negative numbers not allowed -30"
     );
+  });
+
+  // Additional tests
+  test("should throw on invalid number format", () => {
+    expect(() => calc.add("4,xyz,8")).toThrow("Invalid number in input: xyz");
   });
 });
