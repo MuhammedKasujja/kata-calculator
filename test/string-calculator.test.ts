@@ -5,5 +5,6 @@ describe("String Calculator Tests", () => {
   test("should return zero for an empty string", () => {
     const calc = new StringCalculator()
     expect(calc.add("")).toBe(0);
+    expect(calc.add("   ")).toBe(0);
   });
 });
