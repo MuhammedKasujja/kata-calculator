@@ -2,9 +2,14 @@ export class StringCalculator {
   add(numbers: string) {
     if (numbers.trim() === "") return 0;
 
-    const delimeter = ",";
+    const delimiter = ",";
+    const newLineDelimiter = "\n"
 
-    if (numbers.includes(delimeter)) {
+    if (numbers.includes(newLineDelimiter)) {
+      numbers = numbers.replaceAll(newLineDelimiter, ",");
+    }
+
+    if (numbers.includes(delimiter)) {
       const nums = numbers.split(",");
       return nums.reduce(
         (previousValue, currValue) => previousValue + parseInt(currValue),

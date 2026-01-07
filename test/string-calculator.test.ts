@@ -28,4 +28,8 @@ describe("String Calculator Tests", () => {
 
     expect(calc.add(input)).toBe(expectedOutput);
   });
+
+  test("should accept newline as valid delimiter", ()=>{
+    expect(calc.add("1\n2,3")).toBe(6);
+  })
 });
