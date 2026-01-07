@@ -32,4 +32,9 @@ describe("String Calculator Tests", () => {
   test("should accept newline as valid delimiter", ()=>{
     expect(calc.add("1\n2,3")).toBe(6);
   })
+  
+  test("should accept custom delimiter syntax", ()=>{
+    expect(calc.add("//;\n1;2")).toBe(3);
+    expect(calc.add("//+\n1+2+9")).toBe(12);
+  })
 });
